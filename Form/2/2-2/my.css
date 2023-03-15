@@ -1,0 +1,13 @@
+textarea {
+  resize: none;
+  border: none;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.btn-container {
+  position: absolute;
+  padding: 5px;
+}

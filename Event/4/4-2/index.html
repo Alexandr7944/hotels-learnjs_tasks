@@ -1,0 +1,34 @@
+<!-- Поймайте переход по ссылке -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    #contents {
+      padding: 5px;
+      border: 1px green solid;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <fieldset id="contents">
+    <legend>#contents</legend>
+    <p>
+      Как насчёт того, чтобы прочитать <a href="https://wikipedia.org">Википедию</a> или посетить <a href="https://w3.org"><i>W3.org</i></a> и узнать о современных стандартах?
+    </p>
+  </fieldset>
+  <script>
+    const contents = document.querySelector('#contents');
+    contents.addEventListener('click', event => {
+      const link = event.target.closest('a');
+      if (!link) return;
+      let question = confirm(`Leave for ${link.href}`);
+      if (!question) event.preventDefault();
+    })
+  </script>
+</body>
+</html>

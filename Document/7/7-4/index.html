@@ -1,0 +1,28 @@
+<!-- Создайте список -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Создать список</h1>
+  
+  <script>
+    const list = document.createElement('ul');
+    document.body.append(list);
+
+    while (true) {
+      const question = prompt('Введите текст для элемента списка');
+
+      if (!question) break;
+      const li = document.createElement('li');
+      li.textContent = question;
+      list.append(li);
+    }
+  </script>
+</body>
+</html>

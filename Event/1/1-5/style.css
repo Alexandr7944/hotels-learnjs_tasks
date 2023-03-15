@@ -1,0 +1,12 @@
+.close,
+.open {
+  color: green;
+}
+.none {
+  display: none;
+}
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

@@ -1,0 +1,69 @@
+<!-- Спрятать себя -->
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    #field {
+      width: 200px;
+      height: 150px;
+      border: 10px solid black;
+      background-color: #00FF00;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    img {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+    }
+  </style>
+</head>
+
+<body style="height:2000px">
+
+  Нажмите на поле для перемещения мяча.
+  <br> Мяч не должен выходить за границы поля.
+
+  <div id="field">
+    <img src="https://ru.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  </div>
+
+  <script>
+    const field = document.querySelector('#field');
+    const ball = document.querySelector('img');
+    field.addEventListener('click', event => {
+      let top, left;
+      const ballPos = ball.getBoundingClientRect();
+      
+      const borderTop = field.offsetTop + field.clientTop;
+      const borderBottom = borderTop + field.clientHeight;
+      const borderLeft = field.offsetLeft + field.clientLeft;
+      const borderRight = borderLeft + field.clientWidth;
+
+      if (event.clientY < borderTop + ball.clientHeight / 2) {
+        top = borderTop;
+      } else if (event.clientY > borderBottom - ball.clientHeight / 2) {
+        top = borderBottom - ball.clientHeight;
+      } else {
+        top = event.clientY - ball.clientHeight / 2;
+      }
+
+      if (event.clientX < borderLeft + ball.clientWidth / 2) {
+        left = borderLeft;
+      } else if (event.clientX > borderRight - ball.clientWidth / 2) {
+        left = borderRight - ball.clientWidth;
+      } else {
+        left = event.clientX - ball.clientWidth / 2;
+      }
+ 
+      ball.style.top = top + 'px';
+      ball.style.left = left + 'px';
+    })
+  </script>
+</body>
+</html>
