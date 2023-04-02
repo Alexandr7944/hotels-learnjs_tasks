@@ -1,18 +1,13 @@
-// Ошибка создания экземпляра класса
+// Изменяем "prototype"
 
-class Animal {
-  constructor(name) {
-    this.name = name;
-  }
+function Rabbit() {}
+Rabbit.prototype = {
+  eats: true
+};
 
-}
+let rabbit = new Rabbit();
 
-class Rabbit extends Animal {
-  constructor(name) {
-    super(name);
-    this.created = Date.now();
-  }
-}
+Rabbit.prototype = {};
 
-let rabbit = new Rabbit("Белый кролик");
-alert(rabbit.name);
+alert( rabbit.eats ); // true
+
